@@ -1,0 +1,21 @@
+{
+  "name": "jstudio-app-factory",
+  "private": true,
+  "version": "0.1.0",
+  "description": "JSTUDIO App Factory Monorepo",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "test": "turbo test",
+    "lint": "turbo lint",
+    "factory": "node factory/cli/index.js"
+  },
+  "devDependencies": {
+    "turbo": "^2.4.0",
+    "typescript": "^5.7.0"
+  },
+  "packageManager": "pnpm@10.5.2",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
