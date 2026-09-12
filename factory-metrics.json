@@ -1,40 +1,28 @@
 {
   "factory": "JSTUDIO App Factory",
-  "products": [
-    {
-      "product_id": "QPG-001",
-      "app_name": "quanto-posso-gastar",
-      "template_used": "mobile-calculator",
-      "development_hours_estimated": 2.5,
-      "packages_reused": [
-        "@jstudio/money",
-        "@jstudio/storage",
-        "@jstudio/ui",
-        "@jstudio/analytics",
-        "@jstudio/ads",
-        "@jstudio/consent",
-        "@jstudio/notifications",
-        "@jstudio/store-check"
-      ],
-      "target_android_api": 36
-    },
-    {
-      "product_id": "SHP-002",
-      "app_name": "preco-shopee",
-      "template_used": "mobile-calculator",
-      "development_hours_estimated": 0.8,
-      "development_time_reduction": "68%",
-      "packages_reused": [
-        "@jstudio/shopee-math",
-        "@jstudio/storage",
-        "@jstudio/ui",
-        "@jstudio/analytics",
-        "@jstudio/ads",
-        "@jstudio/consent",
-        "@jstudio/notifications",
-        "@jstudio/store-check"
-      ],
-      "target_android_api": 36
-    }
-  ]
+  "phase_1_baseline": {
+    "product_id": "QPG-001",
+    "app_name": "quanto-posso-gastar",
+    "status": "PHASE_1_RELEASE_PENDING",
+    "development_hours_baseline": 22.0,
+    "target_android_api": 36,
+    "packages_created": [
+      "@jstudio/money",
+      "@jstudio/storage",
+      "@jstudio/ui",
+      "@jstudio/analytics",
+      "@jstudio/ads",
+      "@jstudio/consent",
+      "@jstudio/notifications",
+      "@jstudio/store-check"
+    ]
+  },
+  "phase_2_target": {
+    "product_id": "SHP-002",
+    "app_name": "preco-shopee",
+    "status": "STAGED_FOR_PHASE_2_GATE",
+    "target_max_hours": 13.2,
+    "target_reduction_percentage": ">= 40%",
+    "target_android_api": 36
+  }
 }

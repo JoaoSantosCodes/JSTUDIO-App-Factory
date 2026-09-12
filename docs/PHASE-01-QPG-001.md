@@ -3,13 +3,45 @@
 > **Product ID**: `QPG-001`  
 > **Nome do App**: Quanto Posso Gastar?  
 > **Package ID**: `com.jstudio.quantopossogastar`  
-> **Status da Fase**: 🟢 Monorepo Concluído | 🟡 Aguardando Lançamento AAB na Play Console  
+> **Status da Fase 1**:  
+> ✅ Monorepo Foundation (`jstudio-app-factory`)  
+> ✅ Core Shared Packages (`@jstudio/*`)  
+> ✅ App #1 Funcional (`quanto-posso-gastar`)  
+> ✅ Testes Unitários (Vitest 100% PASS)  
+> ✅ Quality Gate CLI (`pnpm factory check`)  
+> ✅ Target API 36 (Android 16 Google Play Requirement)  
+> ⏳ AAB Release & Google Play Console Submission  
+> ⏳ Registro do Baseline Real de Esforço (22h)  
 
 ---
 
-## ⏱️ Registro do Baseline Oficial de Horas (22 Horas)
+## 🔒 Rigor da Linha de Produção (Regra dos Gates)
 
-A Fase 1 serviu para construir toda a infraestrutura da fábrica e o primeiro produto funcional. Este esforço foi contabilizado como o **baseline oficial da JSTUDIO App Factory**:
+> **Nota de Consistência**: O aplicativo `preco-shopee` (`SHP-002`) foi estruturado como teste técnico do scaffolding CLI, mas **NÃO é um produto nem um requisito de liberação da Fase 1**. A Fase 1 foca 100% no lançamento do **QPG-001** para estabelecer o baseline oficial.
+
+```text
+FASE 1 (Foco Total no QPG-001)
+├── QPG-001 (Quanto Posso Gastar?)
+├── Factory Base & Shared Packages (@jstudio/*)
+├── factory check & Testes
+└── AAB Release & Google Play Submission
+        │
+        ▼
+     GATE 1 PASS (AAB Submetido + Baseline 22h Registrado)
+        │
+        ▼
+FASE 2 (Início Oficial do SHP-002)
+└── Preço Shopee (SHP-002)
+      │
+      ▼
+   ¿ Esforço ≤ 13,2h ?
+   ├── ❌ NÃO (FAIL) ──► Parar fábrica & diagnosticar gargalo
+   └── ✅ SIM (PASS) ──► Gate 2 Aprovado ──► Avançar para Fase 3
+```
+
+---
+
+## ⏱️ Registro do Baseline Oficial da Fase 1 (22 Horas)
 
 | Etapa | Horas Gastas | Descrição |
 | :--- | :--- | :--- |
@@ -19,39 +51,24 @@ A Fase 1 serviu para construir toda a infraestrutura da fábrica e o primeiro pr
 | **Testes & Quality Gate** | 2.0h | Suíte Vitest + script CLI `factory check` (Target SDK 36) |
 | **Configuração Android & Capacitor 8** | 3.0h | Gradle, assets e suporte a Android 16 (API 36) |
 | **Documentação & Metadados ASO** | 2.0h | Metadados Play Store (`docs/STORE_LISTING_QPG.md`) e Roadmaps |
-| **TOTAL BASELINE** | **22.0h** | **Referência de cálculo para o Gate da Fase 2 ($\le 13,2$h)** |
+| **TOTAL BASELINE FASE 1** | **22.0h** | **Referência oficial de cálculo para o Gate da Fase 2 ($\le 13,2$h)** |
 
 ---
 
-## 📝 Checklist de Publicação no Google Play Console
+## 📝 Checklist Final de Lançamento (Google Play Console)
 
-### 1. Preparação do Build Android (AAB)
-- [ ] Executar o quality gate da fábrica: `node factory/cli/index.js check` (Garantir **PASS**).
-- [ ] Compilar o bundle de produção web: `npx pnpm --filter quanto-posso-gastar build`.
-- [ ] Gerar o arquivo Android App Bundle (`app-release.aab`) assinado via Android Studio ou Gradle.
-
-### 2. Configuração na Google Play Console
-- [ ] Criar a aplicação no Console com o nome: `Quanto Posso Gastar? — Diário`.
-- [ ] Copiar o Título, Descrição Curta e Descrição Completa contidos em [`docs/STORE_LISTING_QPG.md`](file:///c:/Users/joao.carloos/OneDrive%20-%20DPSP/Documents/ObsidianPortable/Cofre/Antigravity%20IDE/JSTUDIO%20App%20Factory/docs/STORE_LISTING_QPG.md).
-- [ ] Configurar a **Declaração de Segurança dos Dados (Data Safety)**: Marcar que o app **não coleta nem compartilha dados financeiros**.
-- [ ] Upload do ícone oficial ($512 \times 512$) e Feature Graphic ($1024 \times 500$).
-- [ ] Upload das Screenshots do app em alta resolução.
-- [ ] Submeter o arquivo `.aab` para a faixa de teste interno ou produção.
+- [x] **Monorepo & Código 100% Prontos**: App `quanto-posso-gastar` e pacotes `@jstudio/*` compilados e testados.
+- [x] **Quality Gate PASS**: Executar `node factory/cli/index.js check` (Target API 36 verificado).
+- [ ] **Compilar Web Assets**: `npx pnpm --filter quanto-posso-gastar build`.
+- [ ] **Gerar Bundle Android**: Criar `app-release.aab` assinado no Android Studio / Gradle.
+- [ ] **Cadastrar na Play Console**: Nome: `Quanto Posso Gastar? — Diário`, descrições e ASO de [`docs/STORE_LISTING_QPG.md`](file:///c:/Users/joao.carloos/OneDrive%20-%20DPSP/Documents/ObsidianPortable/Cofre/Antigravity%20IDE/JSTUDIO%20App%20Factory/docs/STORE_LISTING_QPG.md).
+- [ ] **Data Safety**: Declarar que o app **não coleta nem compartilha dados financeiros**.
+- [ ] **Upload AAB**: Submeter `.aab` para teste interno ou produção.
 
 ---
 
-## 🎯 Critérios Objetivos para Declarar a Fase 1 Concluída
+## 🎯 Gatilho Estrito para a Fase 2 (SHP-002)
 
-A **Fase 1 será oficialmente encerrada** assim que as 3 condições abaixo forem atendidas:
+Com o Gate 1 aprovado, a **Fase 2 (Preço Shopee)** será iniciada com o cronômetro do zero e a meta de eficiência:
 
-1. [x] **Código e Testes Validados**: Monorepo compilando sem erros e testes com 100% de aprovação.
-2. [ ] **AAB Submetido**: Upload do arquivo `.aab` realizado com sucesso na Google Play Console.
-3. [x] **Métricas Registradas**: Baseline de 22 horas devidamente salvo em `factory-metrics.json`.
-
----
-
-## 🚪 Gatilho para a Fase 2 (SHP-002)
-
-Com a Fase 1 concluída, a **Fase 2 (Preço Shopee)** é iniciada com a meta estrita de tempo:
-
-$$\text{Meta SHP-002} \le 13,2\text{ horas} \quad (\ge 40\% \text{ de redução de esforço})$$
+$$\text{Meta SHP-002} \le 13,2\text{ horas} \quad (\ge 40\% \text{ de redução do tempo})$$
